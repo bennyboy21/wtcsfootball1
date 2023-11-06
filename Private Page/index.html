@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+    <title>Document</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    * {
+        font-family: 'Kanit', sans-serif;
+    }
+
+    body {
+        margin:0px;
+        padding:0px;
+        margin:0px;
+        background:rgb(5, 5, 5);
+        height:fit-content;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    #sign-In-Page {
+        width:100vw;
+        height:auto;
+        position:fixed;
+        top:0px;
+        left:0px;
+        bottom:0px;
+    }
+
+    .quarter-Buttons {
+        width:calc(100vw - 30px);
+        top:15px;
+        left:15px;
+        position:absolute;
+        height:250px;
+        display:grid;
+        grid-template-columns: auto auto;
+        gap:5px;
+    }
+
+    .quarter-Button {
+        width:100%;
+        height:125px;
+        font-size: 40px;
+        font-weight: 900;
+        color:white;
+        background:rgb(255, 255, 255, 0.025);
+        border-radius: 15px;
+        border: 1px solid rgb(255, 255, 255, 0.05);
+    }
+
+    .score-Buttons {
+        width:calc(100vw - 30px);
+        top:275px;
+        left:15px;
+        position:absolute;
+        height:250px;
+        display:flex;
+        flex-direction: column;
+        gap:5px;
+        background:rgb(255, 255, 255, 0.025);
+        border-radius: 15px;
+        border: 1px solid rgb(255, 255, 255, 0.05);
+    }
+
+    .score-Text {
+        font-size: 25px;
+        font-weight: 800;
+        color:white;
+        margin-left: 15px;
+    }
+
+    .our-Score-Input {
+        width:calc(100% - 50px);
+        padding:0px 10px;
+        position:relative;
+        background:rgb(255, 255, 255, 0.05);
+        border: none;
+        margin-left: auto;
+        margin-right: auto;
+        color:white;
+        font-size: 45px;
+        font-weight: 900;
+    }
+
+    .their-Score-Input {
+        width:calc(100% - 50px);
+        padding:0px 10px;
+        position:relative;
+        background:rgb(255, 255, 255, 0.05);
+        border: none;
+        margin-left: auto;
+        margin-right: auto;
+        color:white;
+        font-size: 45px;
+        font-weight: 900;
+    }
+
+    .update-Score-Buttons {
+        width:calc(100vw - 30px);
+        bottom:15px;
+        left:15px;
+        position:absolute;
+        font-size: 30px;
+        font-weight: 900;
+        color:white;
+        height:calc(100% - 547px);
+        background:rgb(255, 255, 255, 0.025);
+        border: 1px solid rgb(255, 255, 255, 0.05);
+        border-radius: 15px;
+        opacity: 0.5;
+        transition: .5s;
+    }
+
+    input:focus {
+        outline: none;
+    }
+</style>
+
+<body>
+    <div id="sign-In-Page">
+        <div class="quarter-Buttons">
+            <button class="quarter-Button" onclick="changeQuarter(1)">Q1</button>
+            <button class="quarter-Button" onclick="changeQuarter(2)">Q2</button>
+            <button class="quarter-Button" onclick="changeQuarter(3)">Q3</button>
+            <button class="quarter-Button" onclick="changeQuarter(4)">Q4</button>
+        </div>
+
+        <div class="score-Buttons">
+            <div class="score-Text" style="margin-top: 5px;">Our Score</div>
+            <input type="number" class="our-Score-Input" inputmode="numeric" oninput="checkChangeScore()">
+            <div class="score-Text">Opponent Score</div>
+            <input type="number" class="their-Score-Input" inputmode="numeric" oninput="checkChangeScore()">
+        </div>
+
+        <button class="update-Score-Buttons" onclick="changeScore()">Update Score</button>
+    </div>
+</body>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCzs0fVAp3yr7sFeJwIk7RoiomZ5Ojkf_I",
+        authDomain: "western-tech.firebaseapp.com",
+        databaseURL: "https://western-tech-default-rtdb.firebaseio.com",
+        projectId: "western-tech",
+        storageBucket: "western-tech.appspot.com",
+        messagingSenderId: "410795294570",
+        appId: "1:410795294570:web:bcdb99863845666de7af13",
+        measurementId: "G-W1YCJF20YP"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    sec = new Date().getSeconds()
+    min = new Date().getMinutes()
+    hour = new Date().getHours()
+    day = new Date().getDate()
+    month = new Date().getMonth()
+    year = new Date().getFullYear()
+    
+    if(sec < 10) {
+        sec = 0 + String(sec)
+    }
+
+    if(min < 10) {
+        min = 0 + String(min)
+    }
+
+    if(hour < 10) {
+        hour = 0 + String(hour)
+    }
+
+    if(day < 10) {
+        day = 0 + String(day)
+    }
+
+    if(month < 10) {
+        month = 0 + String(month)
+    }
+    
+    dateInfo = String(year) + String(month) + String(day) + String(hour) + String(min) + String(sec)
+
+    var liveGame = false
+    var ourScore = 0
+    var theirScore = 0
+    // firebase.database().ref("next-Game/" + dateInfo).set({
+    //     "dateInfo": "Nov 10th, 2023",
+    //     "time": "11:00 AM",
+    //     "opponent": "Richview",
+    // })
+
+    firebase.database().ref("live-Game").on("value", function(snapshot) {
+        if(snapshot.val() != undefined) {
+            liveGame = true
+            ourScore = snapshot.val().ourScore
+            theirScore = snapshot.val().theirScore
+            document.querySelector('.our-Score-Input').value = snapshot.val().ourScore
+            document.querySelector('.their-Score-Input').value = snapshot.val().theirScore
+        }
+    })
+
+    function changeQuarter(quarter) {
+        if(liveGame) {
+            firebase.database().ref("live-Game").update({
+                "quarter":"Q" + quarter
+            })
+        }
+    }
+
+    function checkChangeScore() {
+        var ele1 = document.querySelector(".our-Score-Input").value
+        var ele2 = document.querySelector(".their-Score-Input").value
+        if(ele1 != ourScore) {
+            document.querySelector(".update-Score-Buttons").style.opacity = "1"
+        } else if(ele2 != theirScore) {
+            document.querySelector(".update-Score-Buttons").style.opacity = "1"
+        } else {
+            document.querySelector(".update-Score-Buttons").style.opacity = ".5"
+        }
+    }
+    
+    function changeScore() {
+        var ele1 = document.querySelector(".our-Score-Input").value
+        var ele2 = document.querySelector(".their-Score-Input").value
+        if(ele1 != ourScore) {
+            firebase.database().ref("live-Game").update({"ourScore": ele1})
+            ourScore = ele1
+            document.querySelector(".update-Score-Buttons").style.opacity = ".5"
+        } else if(ele2 != theirScore) {
+            firebase.database().ref("live-Game").update({"theirScore": ele2})
+            theirScore = ele2
+            document.querySelector(".update-Score-Buttons").style.opacity = ".5"
+        } else {
+            alert("No Change")
+        }
+    }
+
+    // document.getElementById("update").addEventListener("click", function() {
+    //     firebase.database().ref("live-Game").set({"quarter":"Q1", "opponent":"Richview", "ourScore": 0, "theirScore": 3})
+    // })
+
+    // firebase.database().ref("info-Games/" + dateInfo).set({
+    //     "dateInfo": "Oct 27th, 2023",
+    //     "time": "2:30 PM",
+    //     "opponent": "Chaminade",
+    //     "ourScore": 11,
+    //     "opponentScore": 26,
+    // })
+
+    // firebase.database().ref("info-Games/" + dateInfo).set({
+    //     "dateInfo": "Oct 20th, 2023",
+    //     "time": "2:30 PM",
+    //     "opponent": "Richview",
+    //     "ourScore": 21,
+    //     "opponentScore": 17,
+    // })
+</script>
+</html>
