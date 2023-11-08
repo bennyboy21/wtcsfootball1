@@ -230,7 +230,14 @@
     function changeScore() {
         var ele1 = document.querySelector(".our-Score-Input").value
         var ele2 = document.querySelector(".their-Score-Input").value
-        if(ele1 != ourScore) {
+        if(ele1 != ourScore && ele2 != theirScore) {
+            firebase.database().ref("live-Game").update({"ourScore": ele1})
+            ourScore = ele1
+            document.querySelector(".update-Score-Buttons").style.opacity = ".5"
+            firebase.database().ref("live-Game").update({"theirScore": ele2})
+            theirScore = ele2
+            document.querySelector(".update-Score-Buttons").style.opacity = ".5"
+        } else if (ele1 != ourScore) {
             firebase.database().ref("live-Game").update({"ourScore": ele1})
             ourScore = ele1
             document.querySelector(".update-Score-Buttons").style.opacity = ".5"
