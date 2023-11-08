@@ -27,14 +27,16 @@
         width:100vw;
         height:calc(100vh - 50px);
         max-height: 750px;
+        max-width: 1500px;
         position:absolute;
         top:0px;
-        left:0px;
+        left:50%;
+        transform:translate(-50%);
         overflow: hidden;
     }
 
     #main-Img {
-        width:calc(100vw + 10px);
+        width:calc(100% + 10px);
         height:100%;
         object-fit: cover;
         object-position: center;
@@ -114,9 +116,141 @@
         bottom: 0px;
     }
 
-    @media (min-width:500px) {
+    .blur-Image {
+        width:250px;
+        /* height:100%; */
+        position:absolute;
+        top:0px;
+        filter: blur(10rem);
+        opacity:0.05;
+    }
+
+    @media(min-width:1500px) {
+        .left-Cover {
+            height:100%;
+            width:20%;
+            max-width: 75px;
+            background:linear-gradient(to right, rgb(5, 5, 5) 0%, rgb(5, 5, 5, 0.9) 25%, rgb(5, 5, 5, 0.6) 50%, rgb(5, 5, 5, 0.3) 75%, transparent);
+            position:absolute;
+            top: 0px;
+            left:0px;
+        }
+
+        .left-Cover-2 {
+            height:100%;
+            width:35%;
+            max-width: 150px;
+            background:linear-gradient(to right, rgb(5, 5, 5) 0%, transparent);
+            position:absolute;
+            top: 0px;
+            left:0px;
+        }
+
+        .left-Cover-3 {
+            height:100%;
+            width:35%;
+            max-width: 150px;
+            background:linear-gradient(to right, rgb(5, 5, 5) 0%, transparent);
+            position:absolute;
+            top: 0px;
+            left:0px;
+        }
+
+        .right-Cover {
+            height:100%;
+            width:20%;
+            max-width: 75px;
+            background:linear-gradient(to left, rgb(5, 5, 5) 0%, rgb(5, 5, 5, 0.9) 25%, rgb(5, 5, 5, 0.6) 50%, rgb(5, 5, 5, 0.3) 75%, transparent);
+            position:absolute;
+            top: 0px;
+            right:0px;
+        }
+
+        .right-Cover-2 {
+            height:100%;
+            width:35%;
+            max-width: 150px;
+            background:linear-gradient(to left, rgb(5, 5, 5) 0%, transparent);
+            position:absolute;
+            top: 0px;
+            right:0px;
+        }
+
+        .right-Cover-3 {
+            height:100%;
+            width:35%;
+            max-width: 150px;
+            background:linear-gradient(to left, rgb(5, 5, 5) 0%, transparent);
+            position:absolute;
+            top: 0px;
+            right:0px;
+        }
+
+    }
+
+    @media (min-width:801px) {
         body {
-            display: none;
+            margin:0px;
+            background:rgb(5, 5, 5);
+            height:fit-content;
+            user-select: none;
+            -webkit-user-select: none;
+            opacity: 0;
+        }
+
+        #notification-Container {
+            width:100vw;
+            max-width: 1500px;
+            height:var(--height-Amount);
+            background:rgb(5, 5, 5);
+            z-index: 15;
+            position:fixed;
+            top:0px;
+            left:50%;
+            transform:translate(-50%);
+            margin-top:calc(var(--height-Amount) * -1);
+            margin-top: 0px;
+        }
+
+        #notification-Text-Container {
+            width:100vw;
+            height:fit-content;
+            position:absolute;
+            top:50%;
+            left:25px;
+            transform:translate(0, -50%);
+        }
+
+        #notification-Header {
+            width:calc(100% - 100px);
+            height:fit-content;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color:white;
+            font-size: 22.5px;
+            font-weight: 800;
+            line-height: 22.5px;
+        }
+
+        #view-More-Notification {
+            font-size: 14px;
+            font-weight: 600;
+            color:rgb(150, 150, 150);
+        }
+
+        #close-Notification-Icon {
+            width:30px;
+            height:30px;
+            position:absolute;
+            top:50%;
+            right:15px;
+            fill:white;
+            transform:translate(0, -50%);
+        }
+
+        #close-Notification-Icon:hover {
+            cursor: pointer;
         }
 
         #top-Bar {
@@ -124,7 +258,7 @@
             height:75px;
             background:transparent;
             position:fixed;
-            top:0px;
+            top:var(--height-Amount);
             z-index: 10; 
         }
 
@@ -138,10 +272,14 @@
             transform:translate(-50%, -50%);
         }
 
+        #logo-Img.live-Game {
+            display: none;
+        }
+
         #second-Section {
             width:calc(100vw - 50px);
             height:fit-content;
-            max-width: 1200px;
+            max-width: 1000px;
             position:relative;
             left:50%;
             top: 750px;
@@ -153,20 +291,199 @@
             gap: 50px;
         }
 
+        #section-Container {
+            width:calc(100vw - 50px);
+            height:fit-content;
+            max-width: 1000px;
+            position:relative;
+            left:50%;
+            transform:translate(-50%);
+            top: 750px;
+            display:grid;
+            grid-template-columns: auto auto;
+        }
+
         #third-Section {
+            width:calc(50vw - 50px);
+            height:fit-content;
+            max-width: 450px;
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            grid-template-columns: auto;
+            gap: 0px;
+            margin-bottom: 30px;
+        }
+
+        #fourth-Section {
+            width:calc(50vw - 50px);
+            height:fit-content;
+            max-width: 450px;
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            grid-template-columns: auto;
+            gap: 0px;
+            margin-bottom: 30px;
+        }
+
+        #fifth-Section {
+            width:calc(100% - 50px);
+            height:fit-content;
+            max-width: 1200px;
+            position:relative;
+            left:50%;
+            top:750px;
+            transform:translate(-50%);
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            grid-template-columns: auto;
+            gap: 0px;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        #sixth-Section {
             width:calc(100vw - 50px);
             height:fit-content;
             max-width: 1200px;
             position:relative;
             left:50%;
-            top:800px;
+            top:750px;
             transform:translate(-50%);
-            overflow: hidden;
-            display:grid;
-            grid-template-columns: auto auto;
-            /* gap: 50px; */
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            grid-template-columns: auto;
+            gap: 0px;
+            padding-bottom:75px;
         }
-        
+
+        #live-Section {
+            width:calc(100vw - 50px);
+            height:fit-content;
+            max-width: 1200px;
+            position:relative;
+            left:50%;
+            top:750px;
+            transform:translate(-50%);
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            grid-template-columns: auto;
+            gap: 0px;
+            margin-top: 25px;
+            padding-bottom:25px;
+        }
+
+        #real-Live-Section {
+            width:calc(100vw);
+            height:70px;
+            position:fixed;
+            left:50%;
+            top:0px;
+            transform:translate(-50%);
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            z-index:100;
+            background:linear-gradient(to bottom, rgb(5, 5, 5), transparent);
+            transition: .5s;
+        }
+
+        #real-Live-Section.live-Game {
+            width:calc(100vw);
+            height:70px;
+            position:fixed;
+            left:50%;
+            top:var(--height-Amount);
+            transform:translate(-50%);
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            z-index:100;
+            background:linear-gradient(to bottom, rgb(5, 5, 5), transparent);
+            transition: .5s;
+        }
+
+        .our-Final-Score-Container {
+            width:55px;
+            height:45px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            left:calc(50% - (50% / 3));
+            top:50%;
+            transform:translate(0, -50%);
+            background:transparent;
+            overflow: hidden;
+        }
+
+        .their-Final-Score-Container {
+            width:55px;
+            height:45px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            right:22.5px;
+            bottom:25px;
+            background:transparent;
+            overflow: hidden;
+            right:calc(50% - (50% / 3));
+            top:50%;
+            transform:translate(0, -50%);
+        }
+
+        .our-Final-Score-1 {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            top:0px;
+        }
+
+        .their-Final-Score-1 {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            top:0px;
+        }
+
+        .our-Final-Score-2 {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            top:50px;
+        }
+
+        .their-Final-Score-2 {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            top:50px;
+        }
+
         .video-Container {
             margin-top: 50px;
             width:400px;
@@ -181,6 +498,20 @@
         }
 
         .text-Container {
+            margin-top: 10px;
+            margin-bottom: 50px;
+            width:calc(100vw - 50px);
+            z-index:15;
+            color:white;
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            position:relative;
+            text-align:center;
+        }
+
+        .text-Container-1 {
             width:calc(100% - 400px);
             color:white;
             display:flex;
@@ -191,14 +522,17 @@
             /* left:-50px; */
         }
 
+        .text-Container-2 {
+            display:none;
+        }
+
         .section-Title {
-            line-height: 80px;
             margin-bottom: 15px;
+            line-height: 45px;
             width:100%;
-            font-size: 80px;
+            font-size: 45px;
             font-weight: 600;
             color:white;
-            text-align:left;
             /* position:absolute;
             background:transparent;
             top:-200px;
@@ -208,7 +542,7 @@
 
         .section-Description {
             width:100%;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 400;
             color:white;
         }
@@ -333,7 +667,7 @@
 
         #football-Name {
             width:calc(100vw - 50px);
-            font-size: 65px;
+            font-size: 50px;
             color:white;
             position:absolute;
             top:50%;
@@ -342,26 +676,1536 @@
             line-height: 65px;
             font-weight: 800;
             transform:translate(-50%, -50%);
-            text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.75);
+            text-shadow: 0px 0px 25px rgb(0, 0, 0);
+        }
+
+        #coaches-Container {
+            width:calc(100% - 50px);
+            max-width: 500px;
+            height:fit-content;
+            position:relative;
+            background:rgb(255, 255, 255, 0.02);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: -20px;
+            z-index: 10;
+            box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .coach-Container {
+            width:100%;
+            height:75px;
+            position:relative;
         }
 
         .coach-Img-Container {
-            width:calc(50vw - 25px);
-            max-width:600px;
-            height:fit-content;
-            /* max-height: 500px; */
-            height: 600px;
-            position:relative;
+            width:50px;
+            height:50px;
+            position: absolute;
+            top:50%;
+            left:15px;
+            border-radius: 100%;
             overflow: hidden;
-            /* left:-25px; */
-            /* margin-top: 500px; */
+            transform:translate(0, -50%);
         }
 
         .coach-Img {
             width:100%;
             height:100%;
             object-fit:cover;
-            object-position: center;
+        }
+
+        .coach-Text {
+            width:calc(100% - 100px);
+            position:absolute;
+            top:50%;
+            left:75px;
+            transform:translate(0, -50%);
+        }
+
+        .coach-Name {
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 23px;
+            line-height:23px;
+            color:white;
+            font-weight:600;
+        }
+
+        .coach-Title {
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 15px;
+            line-height:20px;
+            color:rgb(150, 150, 150);
+            font-weight:600;
+        }
+
+        #captians-Container {
+            width:calc(100% - 50px);
+            max-width: 500px;
+            height:fit-content;
+            position:relative;
+            background:rgb(255, 255, 255, 0.02);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: -20px;
+            z-index: 10;
+            box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .captian-Container {
+            width:100%;
+            height:75px;
+            position:relative;
+        }
+
+        .captian-Img-Container {
+            width:50px;
+            height:50px;
+            position: absolute;
+            top:50%;
+            left:15px;
+            border-radius: 100%;
+            overflow: hidden;
+            transform:translate(0, -50%);
+        }
+
+        .captian-Img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .captian-Text {
+            width:calc(100% - 100px);
+            position:absolute;
+            top:50%;
+            left:75px;
+            transform:translate(0, -50%);
+        }
+
+        .captian-Name {
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 23px;
+            line-height:23px;
+            color:white;
+            font-weight:600;
+        }
+
+        .captian-Title {
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 15px;
+            line-height:20px;
+            color:rgb(150, 150, 150);
+            font-weight:600;
+        }
+
+        #past-Games-Container {
+            width:calc(100vw - 50px);
+            max-width: 500px;
+            height:fit-content;
+            position:relative;
+            background:rgb(255, 255, 255, 0.02);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: -20px;
+            z-index: 10;
+            box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .past-Game-Post-Container {
+            width:100%;
+            height:75px;
+            position:relative;
+        }
+
+        .past-Live-Post-Container {
+            width:100%;
+            max-width: 750px;
+            height:60px;
+            border-radius: 15px;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
+        }
+
+        .next-Live-Post-Container {
+            width:100%;
+            max-width: 500px;
+            height:70px;
+            border-radius: 15px;
+            position:relative;
+            top:50%;
+            transform:translate(0, -50%);
+            background:rgb(255, 255, 255, 0.02);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+        }
+
+        .past-Game-Date {
+            position:absolute;
+            top:5px;
+            left:50%;
+            transform:translate(-50%);
+            font-weight: 700;
+            color:rgb(150, 150, 150);
+        }
+
+        .next-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:absolute;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            left:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .next-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            right:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .past-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            left:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .past-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            right:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .next-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            left:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .next-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            right:25px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .live-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            left:100px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .live-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            right:100px;
+            transform:translate(0, -50%);
+            border-radius: 100%;
+        }
+
+        .past-Game-Img {
+            width:100%;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .vs-Text {
+            font-size: 25px;
+            color:white;
+            font-weight: 900;
+            font-style: italic;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+
+        .live-Vs-Text {
+            font-size: 25px;
+            color:white;
+            font-weight: 900;
+            font-style: italic;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+
+        .final-Text {
+            position:absolute;
+            bottom:35px;
+            left:50%;
+            transform:translate(-50%);
+            font-weight: 700;
+            color:rgb(150, 150, 150);
+            display: none;
+        }
+
+        .our-Final-Score {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            left:100px;
+            top:50%;
+            transform:translate(0, -50%);
+        }
+
+        .their-Final-Score {
+            width:50px;
+            font-size: 30px;
+            color:white;
+            position:absolute;
+            text-align:center;
+            font-weight: 800;
+            position:absolute;
+            right:100px;
+            top:50%;
+            transform:translate(0, -50%);
+        }
+
+        .line-Break {
+            width:calc(100% - 30px);
+            height:2px;
+            background:rgb(255, 255, 255, 0.05);
+            border-radius: 15px;
+            position:relative;
+            left:50%;
+            transform:translate(-50%);
+        }
+        
+        .line-Game-Break {
+            width:calc(100% - 30px);
+            height:2px;
+            background:rgb(255, 255, 255, 0.05);
+            border-radius: 15px;
+            position:absolute;
+            left:50%;
+            transform:translate(-50%);
+            opacity: 1;
+            margin-top: -2px;
+        }
+
+        #social-Icon-Contianer {
+            margin-top: -25px;
+            width:200px;
+            display:flex;
+            justify-content: space-evenly;
+        }
+
+        .background-Incon-Socials-Container {
+            width:45px;
+            height:45px;
+            border-radius: 100%;
+            background:white;
+            border:2px solid black;
+            /* overflow: hidden; */
+        }
+
+        .social-Icon {
+            width:100%;
+            height:100%;
+            fill:rgb(15, 15, 15);
+            border-radius: 100%;
+            scale: 1.15;
+        }
+
+        #loading-Container {
+            width:100vw;
+            height:100vh;
+            position:fixed;
+            top:0px;
+            left:0px;
+            background:radial-gradient(rgb(5, 5, 5, 1) 100%, transparent 0%);
+            z-index:100;
+            opacity:1;
+            transition: .5s;
+        }
+
+        .red-Flash {
+            width:fit-content;
+            height:fit-content;
+            border-radius: 15px;
+            padding:5px 15px;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
+            right:25px;
+            font-weight: 800;
+            background:rgb(214, 31, 31);
+            color:white;
+            z-index:15;
+        }
+
+        .next-Game-Date {
+            position:absolute;
+            top:5px;
+            left:50%;
+            transform:translate(-50%);
+            font-weight: 700;
+            color:rgb(150, 150, 150);
+        }
+
+        .quarter-1 {
+            width:fit-content;
+            text-align:left;
+            font-size: 25px;
+            color:rgb(150, 150, 150);
+            font-weight: 800;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+
+        .quarter-2 {
+            width:fit-content;
+            text-align:left;
+            font-size: 25px;
+            color:rgb(150, 150, 150);
+            font-weight: 800;
+            position:absolute;
+            margin-top: 50px;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+
+        #quarter-Container {
+            width:50px;
+            height:50px;
+            text-align:left;
+            font-size: 25px;
+            color:rgb(150, 150, 150);
+            font-weight: 800;
+            position:relative;
+            background:transparent;
+            top:50%;
+            left:20px;
+            transform:translate(0, -50%);
+            overflow:hidden;
+        }
+
+        #quarter-Container::before {
+            content: "";
+            background:rgb(32, 127, 18);
+            width:0%;
+            height:3px;
+            border-radius: 15px;
+            position:absolute;
+            bottom:2px;
+            left:0px;
+            animation:liveAnimation 4s infinite;
+        }
+
+        @keyframes liveAnimation {
+            0% {
+                width:0%;
+                left:0px;
+                right:100%;
+            }
+
+            20% {
+                width:100%;
+                left:0px;
+                right:0%;
+            }
+
+            30% {
+                width:0%;
+                right:0px;
+                left:100%;
+            }
+
+            50% {
+                width:100%;
+                right:0px;
+                left:0px;
+            }
+
+            70% {            
+                width:0%;
+                right:100%;
+                left:0px;
+            }
+
+            100% {
+                width:0%;
+                right:100%;
+                left:0px;
+            }
+        }
+
+        .see-More-Button {
+            width:100%;
+            height:60px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size: 20px;
+            font-weight: 700;
+            color:rgb(150, 150, 150);
+        }
+    }
+
+    @media (min-width:501px) {
+        #blur-Img-4 {
+            width:250px;
+            /* height:100%; */
+            position:absolute;
+            top:150px;
+            right:50px;
+            filter: blur(10rem) brightness(50%);
+            opacity:.5;
+            z-index:1;
+        }
+
+        @media (max-width:800px) {
+            body {
+                margin:0px;
+                background:rgb(5, 5, 5);
+                height:fit-content;
+                user-select: none;
+                -webkit-user-select: none;
+                opacity: 0;
+            }
+
+            #notification-Container {
+                width:100vw;
+                height:var(--height-Amount);
+                background:rgb(5, 5, 5);
+                z-index: 15;
+                position:fixed;
+                top:0px;
+                margin-top:calc(var(--height-Amount) * -1);
+                margin-top: 0px;
+            }
+
+            #notification-Text-Container {
+                width:100vw;
+                height:fit-content;
+                position:absolute;
+                top:50%;
+                left:25px;
+                transform:translate(0, -50%);
+            }
+
+            #notification-Header {
+                width:calc(100% - 100px);
+                height:fit-content;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color:white;
+                font-size: 22.5px;
+                font-weight: 800;
+                line-height: 22.5px;
+            }
+
+            #view-More-Notification {
+                font-size: 14px;
+                font-weight: 600;
+                color:rgb(150, 150, 150);
+            }
+
+            #close-Notification-Icon {
+                width:30px;
+                height:30px;
+                position:absolute;
+                top:50%;
+                right:15px;
+                fill:white;
+                transform:translate(0, -50%);
+            }
+
+            #close-Notification-Icon:hover {
+                cursor: pointer;
+            }
+
+            #top-Bar {
+                width:100vw;
+                height:75px;
+                background:transparent;
+                position:fixed;
+                top:var(--height-Amount);
+                z-index: 10; 
+            }
+
+            #logo-Img {
+                width:60px;
+                height:60px;
+                z-index: 10;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+            
+            .video-Container {
+                margin-top: -20px;
+                width:400px;
+                height:600px;
+                position:relative;
+                /* border-radius: 15px; */
+                overflow: hidden;
+                background:rgb(30, 30, 30);
+                margin-bottom:70px;
+                box-shadow: 1px solid rgb(0, 0, 0, 0.25);
+                /* border: 1px solid rgb(170, 170, 170); */
+            }
+
+            #second-Section {
+                width:calc(100vw - 50px);
+                height:fit-content;
+                max-width: 1200px;
+                position:relative;
+                left:50%;
+                top: 750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column-reverse;
+                gap: 50px;
+            }
+
+            #third-Section {
+                width:calc(100vw - 50px);
+                height:fit-content;
+                max-width: 1200px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+                margin-bottom: 30px;
+            }
+
+            #fourth-Section {
+                width:calc(100vw - 50px);
+                height:fit-content;
+                max-width: 1200px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+                margin-bottom: 30px;
+            }
+
+            #fifth-Section {
+                width:calc(100vw - 50px);
+                height:fit-content;
+                max-width: 1200px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+                margin-top: -10px;
+                margin-bottom: 30px;
+            }
+
+            #sixth-Section {
+                width:calc(100vw - 50px);
+                height:fit-content;
+                max-width: 1200px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+                padding-bottom:75px;
+            }
+
+            #live-Section {
+                width:calc(100vw - 50px);
+                max-width: 500px;
+                height:fit-content;
+                margin-top: 40px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+            }
+
+            #real-Live-Section {
+                width:calc(100vw - 50px);
+                max-width: 500px;
+                height:fit-content;
+                margin-top: -20px;
+                position:relative;
+                left:50%;
+                top:750px;
+                transform:translate(-50%);
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                grid-template-columns: auto;
+                gap: 0px;
+                margin-bottom: 10px;
+            }
+
+            .our-Final-Score-Container {
+                width:55px;
+                height:45px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                left:22.5px;
+                bottom:25px;
+                background:transparent;
+                overflow: hidden;
+            }
+
+            .their-Final-Score-Container {
+                width:55px;
+                height:45px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                right:22.5px;
+                bottom:25px;
+                background:transparent;
+                overflow: hidden;
+            }
+
+            .our-Final-Score-1 {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                top:0px;
+            }
+
+            .their-Final-Score-1 {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                top:0px;
+            }
+
+            .our-Final-Score-2 {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                top:50px;
+            }
+
+            .their-Final-Score-2 {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                top:50px;
+            }
+
+            .text-Container-2 {
+                margin-top: 10px;
+                margin-bottom: 50px;
+                width:calc(100vw - 50px);
+                z-index:15;
+                color:white;
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                position:relative;
+                text-align:center;
+            }
+
+            .text-Container-1 {
+                margin-top: 10px;
+                margin-bottom: 50px;
+                width:calc(100vw - 50px);
+                z-index:15;
+                color:white;
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                position:relative;
+                text-align:center;
+            }
+
+            .text-Container {
+                margin-top: 10px;
+                margin-bottom: 50px;
+                width:calc(100vw - 50px);
+                z-index:15;
+                color:white;
+                display:flex;
+                justify-self: center;
+                align-items:center;
+                flex-direction: column;
+                position:relative;
+                text-align:center;
+            }
+
+            .section-Title {
+                margin-bottom: 15px;
+                line-height: 45px;
+                width:100%;
+                font-size: 45px;
+                font-weight: 600;
+                color:white;
+                /* position:absolute;
+                background:transparent;
+                top:-200px;
+                left:50%;
+                transform:translate(-50%); */
+            }
+
+            .section-Description {
+                width:calc(100% - 50px);
+                max-width: 500px;
+                font-size: 17px;
+                font-weight: 400;
+                color:white;
+            }
+
+            .insta-Info-Container {
+                width:100%;
+                height:75px;
+                position:absolute;
+                top:0px;
+                z-index: 10;
+            }
+
+            .profile-Picture-Contianer {
+                width:45px;
+                height:45px;
+                border-radius: 100%;
+                overflow: hidden;
+                position:relative;
+                left:15px;
+                top:50%;
+                transform:translate(0, -50%);
+            }
+
+            .profile-Picture {
+                width:100%;
+                height:100%;
+                scale:1;
+            }
+
+            .insta-Handle {
+                width:calc(100% - 225px);
+                color:white;
+                font-size: 18px;
+                font-weight: 400;
+                position:absolute;
+                top:50%;
+                left:70px;
+                transform:translate(0, -50%);
+            }
+
+            .view-Insta-Page {
+                font-size: 15px;
+                font-weight: 400;
+                border: 2px solid white;
+                color:white;
+
+                width:100px;
+                text-align: center;
+                padding:7px 10px;
+                border-radius: 25px;
+                position:absolute;
+                right:25px;
+                top:50%;
+                transform:translate(0, -50%);
+            }
+
+            .view-Insta-Page:hover {
+                cursor: pointer;
+            }
+
+            .watch-Again {
+                width:100%;
+                height:100%;
+                background:rgb(5, 5, 5, 0.3);
+                backdrop-filter:blur(.5rem);
+                -webkit-backdrop-filter: blur(.5rem);
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                color:white;
+                position:absolute;
+                top:0px;
+                left:0px;
+                z-index:0;
+                opacity:0;
+            }
+            
+            .watch-Again:hover {
+                cursor: pointer;
+            }
+
+            .watch-Again-Text {
+                width:100px;
+                height:25px;
+                padding:10px 15px;
+                text-align: center;
+                border-radius: 20px;
+                background:rgb(5, 5, 5, 0.3);
+                backdrop-filter:blur(.5rem);
+                -webkit-backdrop-filter: blur(.5rem);
+            }
+
+            .mute-Unmute-Button {
+                width:45px;
+                height:45px;
+                border-radius: 100%;
+                background:rgb(5, 5, 5, 0.3);
+                backdrop-filter:blur(.5rem);
+                -webkit-backdrop-filter: blur(.5rem);
+                position:absolute;
+                bottom:25px;
+                right:25px;
+                z-index: 10;
+                display:flex;
+                justify-content:center;
+                align-items: center;
+            }
+
+            .mute-Unmute-Button:hover {
+                cursor: pointer;
+            }
+
+            .mute-Buttons {
+                width:20px;
+                height:20px;
+                fill:white;
+            }
+
+            #mute {
+                display:none;
+            }
+
+            #football-Name {
+                width:calc(100vw - 50px);
+                font-size: 50px;
+                color:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                text-align:center;
+                line-height: 65px;
+                font-weight: 800;
+                transform:translate(-50%, -50%);
+                text-shadow: 0px 0px 25px rgb(0, 0, 0);
+            }
+
+            #coaches-Container {
+                width:calc(100vw - 50px);
+                max-width: 500px;
+                height:fit-content;
+                position:relative;
+                background:rgb(255, 255, 255, 0.02);
+                backdrop-filter: blur(1rem);
+                -webkit-backdrop-filter: blur(1rem);
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: -20px;
+                z-index: 10;
+                box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .coach-Container {
+                width:100%;
+                height:75px;
+                position:relative;
+            }
+
+            .coach-Img-Container {
+                width:50px;
+                height:50px;
+                position: absolute;
+                top:50%;
+                left:15px;
+                border-radius: 100%;
+                overflow: hidden;
+                transform:translate(0, -50%);
+            }
+
+            .coach-Img {
+                width:100%;
+                height:100%;
+                object-fit:cover;
+            }
+
+            .coach-Text {
+                width:calc(100% - 80px);
+                position:absolute;
+                top:50%;
+                left:75px;
+                transform:translate(0, -50%);
+            }
+
+            .coach-Name {
+                width:100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 23px;
+                line-height:23px;
+                color:white;
+                font-weight:600;
+            }
+
+            .coach-Title {
+                width:100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 15px;
+                line-height:20px;
+                color:rgb(150, 150, 150);
+                font-weight:600;
+            }
+
+            #captians-Container {
+                width:calc(100vw - 50px);
+                max-width: 500px;
+                height:fit-content;
+                position:relative;
+                background:rgb(255, 255, 255, 0.02);
+                backdrop-filter: blur(1rem);
+                -webkit-backdrop-filter: blur(1rem);
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: -20px;
+                z-index: 10;
+                box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .captian-Container {
+                width:100%;
+                height:75px;
+                position:relative;
+            }
+
+            .captian-Img-Container {
+                width:50px;
+                height:50px;
+                position: absolute;
+                top:50%;
+                left:15px;
+                border-radius: 100%;
+                overflow: hidden;
+                transform:translate(0, -50%);
+            }
+
+            .captian-Img {
+                width:100%;
+                height:100%;
+                object-fit:cover;
+            }
+
+            .captian-Text {
+                width:calc(100% - 80px);
+                position:absolute;
+                top:50%;
+                left:75px;
+                transform:translate(0, -50%);
+            }
+
+            .captian-Name {
+                width:100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 23px;
+                line-height:23px;
+                color:white;
+                font-weight:600;
+            }
+
+            .captian-Title {
+                width:100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 15px;
+                line-height:20px;
+                color:rgb(150, 150, 150);
+                font-weight:600;
+            }
+
+            #past-Games-Container {
+                width:calc(100vw - 50px);
+                max-width: 500px;
+                height:fit-content;
+                position:relative;
+                background:rgb(255, 255, 255, 0.02);
+                backdrop-filter: blur(1rem);
+                -webkit-backdrop-filter: blur(1rem);
+                border-radius: 15px;
+                overflow: hidden;
+                margin-top: -20px;
+                z-index: 10;
+                box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .past-Game-Post-Container {
+                width:100%;
+                height:190px;
+                position:relative;
+            }
+
+            .past-Live-Post-Container {
+                width:100%;
+                height:200px;
+                background:rgb(255, 255, 255, 0.02);
+                backdrop-filter: blur(1rem);
+                -webkit-backdrop-filter: blur(1rem); 
+                border-radius: 15px;
+                position:relative;
+                margin-top: -25px;
+            }
+
+            .past-Game-Date {
+                position:absolute;
+                top:25px;
+                left:50%;
+                transform:translate(-50%);
+                font-weight: 700;
+                color:rgb(150, 150, 150);
+            }
+
+            .past-Game-Our-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                left:25px;
+                border-radius: 100%;
+            }
+
+            .past-Game-Their-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                right:25px;
+                border-radius: 100%;
+            }
+
+            .next-Game-Our-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                left:25px;
+                border-radius: 100%;
+            }
+
+            .next-Game-Their-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                right:25px;
+                border-radius: 100%;
+            }
+
+            .live-Game-Our-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                left:25px;
+                border-radius: 100%;
+            }
+
+            .live-Game-Their-Profile-Container {
+                width:50px;
+                height:50px;
+                position:relative;
+                overflow:hidden;
+                background:transparent;
+                position:absolute;
+                top:75px;
+                right:25px;
+                border-radius: 100%;
+            }
+
+            .past-Game-Img {
+                width:100%;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .vs-Text {
+                font-size: 25px;
+                color:white;
+                font-weight: 900;
+                font-style: italic;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+
+            .live-Vs-Text {
+                font-size: 25px;
+                color:white;
+                font-weight: 900;
+                font-style: italic;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+
+            .final-Text {
+                position:absolute;
+                bottom:35px;
+                left:50%;
+                transform:translate(-50%);
+                font-weight: 700;
+                color:rgb(150, 150, 150);
+            }
+
+            .our-Final-Score {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                left:25px;
+                bottom:25px;
+            }
+
+            .their-Final-Score {
+                width:50px;
+                font-size: 30px;
+                color:white;
+                position:absolute;
+                text-align:center;
+                font-weight: 800;
+                position:absolute;
+                right:25px;
+                bottom:25px;
+            }
+
+            .line-Break {
+                width:calc(100% - 30px);
+                height:2px;
+                background:rgb(255, 255, 255, 0.05);
+                border-radius: 15px;
+                position:relative;
+                left:50%;
+                transform:translate(-50%);
+            }
+            
+            .line-Game-Break {
+                width:calc(100% - 30px);
+                height:2px;
+                background:rgb(255, 255, 255, 0.05);
+                border-radius: 15px;
+                position:absolute;
+                left:50%;
+                transform:translate(-50%);
+                opacity: 1;
+                margin-top: -2px;
+            }
+
+            #social-Icon-Contianer {
+                margin-top: -25px;
+                width:200px;
+                display:flex;
+                justify-content: space-evenly;
+            }
+
+            .background-Incon-Socials-Container {
+                width:45px;
+                height:45px;
+                border-radius: 100%;
+                background:white;
+                border:2px solid black;
+                /* overflow: hidden; */
+            }
+
+            .social-Icon {
+                width:100%;
+                height:100%;
+                fill:rgb(15, 15, 15);
+                border-radius: 100%;
+                scale: 1.15;
+            }
+
+            #loading-Container {
+                width:100vw;
+                height:100vh;
+                position:fixed;
+                top:0px;
+                left:0px;
+                background:radial-gradient(rgb(5, 5, 5, 1) 100%, transparent 0%);
+                z-index:100;
+                opacity:1;
+                transition: .5s;
+            }
+
+            .red-Flash {
+                width:fit-content;
+                height:fit-content;
+                border-radius: 15px;
+                padding:5px 15px;
+                position:absolute;
+                top:25px;
+                right:25px;
+                font-weight: 800;
+                background:rgb(214, 31, 31);
+                color:white;
+                z-index:15;
+            }
+
+            .next-Game-Date {
+                width:fit-content;
+                text-align:left;
+                font-size: 25px;
+                color:rgb(150, 150, 150);
+                font-weight: 800;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+
+            .quarter-1 {
+                width:fit-content;
+                text-align:left;
+                font-size: 25px;
+                color:rgb(150, 150, 150);
+                font-weight: 800;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+
+            .quarter-2 {
+                width:fit-content;
+                text-align:left;
+                font-size: 25px;
+                color:rgb(150, 150, 150);
+                font-weight: 800;
+                position:absolute;
+                margin-top: 50px;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+            }
+
+            #quarter-Container {
+                width:50px;
+                height:50px;
+                text-align:left;
+                font-size: 25px;
+                color:rgb(150, 150, 150);
+                font-weight: 800;
+                position:relative;
+                background:transparent;
+                top:15px;
+                left:20px;
+                overflow:hidden;
+            }
+
+            #quarter-Container::before {
+                content: "";
+                background:rgb(32, 127, 18);
+                width:0%;
+                height:3px;
+                border-radius: 15px;
+                position:absolute;
+                bottom:2px;
+                left:0px;
+                animation:liveAnimation 4s infinite;
+            }
+
+            @keyframes liveAnimation {
+                0% {
+                    width:0%;
+                    left:0px;
+                    right:100%;
+                }
+
+                20% {
+                    width:100%;
+                    left:0px;
+                    right:0%;
+                }
+
+                30% {
+                    width:0%;
+                    right:0px;
+                    left:100%;
+                }
+
+                50% {
+                    width:100%;
+                    right:0px;
+                    left:0px;
+                }
+
+                70% {            
+                    width:0%;
+                    right:100%;
+                    left:0px;
+                }
+
+                100% {
+                    width:0%;
+                    right:100%;
+                    left:0px;
+                }
+            }
+
+            .see-More-Button {
+                width:100%;
+                height:60px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                font-size: 20px;
+                font-weight: 700;
+                color:rgb(150, 150, 150);
+            }
         }
     }
 
@@ -373,6 +2217,16 @@
             user-select: none;
             -webkit-user-select: none;
             opacity: 0;
+        }
+
+        #blur-Img-4 {
+            width:250px;
+            /* height:100%; */
+            position:absolute;
+            top:0px;
+            filter: blur(10rem) brightness(50%);
+            opacity:.5;
+            z-index: 1;
         }
 
         #notification-Container {
@@ -421,6 +2275,10 @@
             right:15px;
             fill:white;
             transform:translate(0, -50%);
+        }
+
+        #close-Notification-Icon:hover {
+            cursor: pointer;
         }
 
         #top-Bar {
@@ -548,7 +2406,6 @@
             flex-direction: column;
             grid-template-columns: auto;
             gap: 0px;
-            margin-bottom: 50px;
         }
 
         #real-Live-Section {
@@ -566,7 +2423,7 @@
             flex-direction: column;
             grid-template-columns: auto;
             gap: 0px;
-            margin-bottom: 50px;
+            margin-bottom: 10px;
         }
 
         .our-Final-Score-Container {
@@ -635,6 +2492,34 @@
             font-weight: 800;
             position:absolute;
             top:50px;
+        }
+
+        .text-Container-2 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+            width:calc(100vw - 50px);
+            z-index:15;
+            color:white;
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            position:relative;
+            text-align:center;
+        }
+
+        .text-Container-1 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+            width:calc(100vw - 50px);
+            z-index:15;
+            color:white;
+            display:flex;
+            justify-self: center;
+            align-items:center;
+            flex-direction: column;
+            position:relative;
+            text-align:center;
         }
 
         .text-Container {
@@ -933,6 +2818,7 @@
 
         #past-Games-Container {
             width:calc(100vw - 50px);
+            max-width: 500px;
             height:fit-content;
             position:relative;
             background:rgb(255, 255, 255, 0.02);
@@ -947,8 +2833,19 @@
 
         .past-Game-Post-Container {
             width:100%;
-            height:180px;
+            height:170px;
             position:relative;
+        }
+
+        .past-Live-Post-Container {
+            width:100%;
+            height:200px;
+            background:rgb(255, 255, 255, 0.02);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem); 
+            border-radius: 15px;
+            position:relative;
+            margin-top: -25px;
         }
 
         .past-Game-Date {
@@ -967,8 +2864,10 @@
             overflow:hidden;
             background:transparent;
             position:absolute;
-            top:50px;
+            top:50%;
+            transform:translate(0, -50%);
             left:25px;
+            margin-top: -10px;
             border-radius: 100%;
         }
 
@@ -979,7 +2878,61 @@
             overflow:hidden;
             background:transparent;
             position:absolute;
-            top:50px;
+            top:50%;
+            transform:translate(0, -50%);
+            right:25px;
+            margin-top: -10px;
+            border-radius: 100%;
+        }
+
+        .live-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
+            left:25px;
+            border-radius: 100%;
+        }
+
+        .live-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
+            right:25px;
+            border-radius: 100%;
+        }
+
+        .next-Game-Our-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
+            left:25px;
+            border-radius: 100%;
+        }
+
+        .next-Game-Their-Profile-Container {
+            width:50px;
+            height:50px;
+            position:relative;
+            overflow:hidden;
+            background:transparent;
+            position:absolute;
+            top:50%;
+            transform:translate(0, -50%);
             right:25px;
             border-radius: 100%;
         }
@@ -998,9 +2951,21 @@
             font-weight: 900;
             font-style: italic;
             position:absolute;
-            top:55px;
+            margin-top: -15px;
+            top:50%;
             left:50%;
-            transform:translate(-50%);
+            transform:translate(-50%, -50%);
+        }
+
+        .live-Vs-Text {
+            font-size: 25px;
+            color:white;
+            font-weight: 900;
+            font-style: italic;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
         }
 
         .final-Text {
@@ -1100,12 +3065,24 @@
             border-radius: 15px;
             padding:5px 15px;
             position:absolute;
-            top:-2px;
+            top:25px;
             right:25px;
             font-weight: 800;
             background:rgb(214, 31, 31);
             color:white;
             z-index:15;
+        }
+
+        .next-Game-Date {
+            width:fit-content;
+            text-align:left;
+            font-size: 25px;
+            color:rgb(150, 150, 150);
+            font-weight: 800;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
         }
 
         .quarter-1 {
@@ -1235,8 +3212,8 @@
     <div id="top-Bar">
         <div id="notification-Container">
             <div id="notification-Text-Container">
-                <div id="notification-Header">Game Tickets</div>
-                <div id="view-More-Notification">To Buy Tickets Go To Room 151.</div>
+                <div id="notification-Header"></div>
+                <div id="view-More-Notification"></div>
             </div>
 
             <svg id="close-Notification-Icon" onclick="closeNotification()" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
@@ -1256,20 +3233,28 @@
         <div class="bottom-Cover"></div>
         <div class="bottom-Cover-2"></div>
         <div class="bottom-Cover-3"></div>
+        <div class="left-Cover"></div>
+        <div class="left-Cover-2"></div>
+        <div class="left-Cover-3"></div>
+        <div class="right-Cover"></div>
+        <div class="right-Cover-2"></div>
+        <div class="right-Cover-3"></div>
         <div id="football-Name">Western Tech Colts</div>
     </div>
 
     <div id="real-Live-Section">
         
-        <div class="text-Container">        
+        <div class="text-Container-2">        
             <div class="section-Title" style="font-size:55px;line-height:55px;">Live Game</div>
             <div class="section-Description"></div>
         </div>
     </div>
     
     <div id="loading-Container"></div>
-    
+
     <div id="second-Section">
+        <img id="blur-Img-4" class="blur-Image" src="Media/Blur(4).JPG">
+
         <div class="video-Container" onclick="muteUnmute()">
             <div class="insta-Info-Container">
                 <div class="profile-Picture-Contianer">
@@ -1299,128 +3284,133 @@
             <div class="bottom-Cover-2"></div>
             <div class="bottom-Cover-3"></div>
         </div>
-        <div class="text-Container">        
+        <div class="text-Container-1">        
             <div class="section-Title" style="font-size:55px;line-height:55px;">Who Are We</div>
             <div class="section-Description">We are the WTCS (<a href="https://en.wikipedia.org/wiki/Western_Technical-Commercial_School">Western Technical-Commercial School</a>) Colts Football Team. A Tier 1 team in the TDSB (<a href="https://en.wikipedia.org/wiki/Toronto_District_School_Board">Toronto District School Board</a>). Our team is a diverse group of players from all over the GTA (<a href="https://en.wikipedia.org/wiki/Greater_Toronto_Area">Greater Toronto Area</a>). We have had a team in the past, but with the passing of <a href="https://www.thestar.com/news/gta/western-tech-students-remember-peter-cram-beloved-teacher-and-football-coach/article_a33da52d-af7b-5327-bb97-a63496661139.html#:~:text=High%20school%20football%20coach%20Peter,to%20get%20over%20the%20loss.">Peter Cram</a> in 2012 the football team fell apart until in 2021 fall season where Russell Hoff the current head coach with the help of Stephen Espi worked hard to rebuild the team and played as a Varsity team during the 21-22 season.</div>
         </div>
     </div>
-
-    <div id="third-Section">
-        
-        <div class="text-Container">        
-            <div class="section-Title">Coaches</div>
-            <div class="section-Description"></div>
-        </div>
-        <div id="coaches-Container">
+    
+    <div id="section-Container">
+        <div id="third-Section">
+            <img id="blur-Img-2" class="blur-Image" src="Media/Blur(2).JPG">
             
-            <div class="coach-Container">
-                <div class="coach-Img-Container">
-                    <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
-                </div>
-                <div class="coach-Text">
-                    <div class="coach-Name">Russell Hoff</div>
-                    <div class="coach-Title">Sr. Offensive Head Coach</div>
-                </div>
+            <div class="text-Container">        
+                <div class="section-Title">Coaches</div>
+                <div class="section-Description"></div>
             </div>
-            <div class="line-Break"></div>
-
-            <div class="coach-Container">
-                <div class="coach-Img-Container">
-                    <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
+            <div id="coaches-Container">
+                
+                <div class="coach-Container">
+                    <div class="coach-Img-Container">
+                        <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
+                    </div>
+                    <div class="coach-Text">
+                        <div class="coach-Name">Russell Hoff</div>
+                        <div class="coach-Title">Sr. Offensive Head Coach</div>
+                    </div>
                 </div>
-                <div class="coach-Text">
-                    <div class="coach-Name">Stephen Espi</div>
-                    <div class="coach-Title">Sr. Defensive Head Coach</div>
+                <div class="line-Break"></div>
+    
+                <div class="coach-Container">
+                    <div class="coach-Img-Container">
+                        <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
+                    </div>
+                    <div class="coach-Text">
+                        <div class="coach-Name">Stephen Espi</div>
+                        <div class="coach-Title">Sr. Defensive Head Coach</div>
+                    </div>
                 </div>
+    
+                <!-- <div class="coach-Container">
+                    <div class="coach-Img-Container">
+                        <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
+                    </div>
+                    <div class="coach-Text">
+                        <div class="coach-Name">Russell Hoff</div>
+                        <div class="coach-Title">Offensive Coach</div>
+                    </div>
+                </div> -->
             </div>
-
-            <!-- <div class="coach-Container">
-                <div class="coach-Img-Container">
-                    <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
-                </div>
-                <div class="coach-Text">
-                    <div class="coach-Name">Russell Hoff</div>
-                    <div class="coach-Title">Offensive Coach</div>
-                </div>
-            </div> -->
         </div>
-    </div>
-
-    <div id="fourth-Section">
-        
-        <div class="text-Container">        
-            <div class="section-Title">Captains</div>
-            <div class="section-Description"></div>
-        </div>
-        <div id="captians-Container">
+    
+        <div id="fourth-Section">
+    
+            <img id="blur-Img-1" class="blur-Image" src="Media/Blur(1).JPG">
             
-            <div class="captian-Container">
-                <div class="captian-Img-Container">
-                    <img class="captian-Img" src="Media/JohnB.jpeg">
-                </div>
-                <div class="captian-Text">
-                    <div class="captian-Name">John Bratkowski (#5)</div>
-                    <div class="captian-Title">RB (#5)</div>
-                </div>
+            <div class="text-Container">        
+                <div class="section-Title">Captians</div>
+                <div class="section-Description"></div>
             </div>
-
-            <div class="line-Break"></div>
-
-            <div class="captian-Container">
-                <div class="captian-Img-Container">
-                    <img class="captian-Img" src="Media/JacksonG.jpeg">
+            <div id="captians-Container">
+                
+                <div class="captian-Container">
+                    <div class="captian-Img-Container">
+                        <img class="captian-Img" src="Media/JohnB.jpeg">
+                    </div>
+                    <div class="captian-Text">
+                        <div class="captian-Name">John Bratkowski (#5)</div>
+                        <div class="captian-Title">RB (#5)</div>
+                    </div>
                 </div>
-                <div class="captian-Text">
-                    <div class="captian-Name">Jackson Galanyk (#12)</div>
-                    <div class="captian-Title">QB (#12)</div>
+    
+                <div class="line-Break"></div>
+    
+                <div class="captian-Container">
+                    <div class="captian-Img-Container">
+                        <img class="captian-Img" src="Media/JacksonG.jpeg">
+                    </div>
+                    <div class="captian-Text">
+                        <div class="captian-Name">Jackson Galanyk (#12)</div>
+                        <div class="captian-Title">QB (#12)</div>
+                    </div>
                 </div>
+                
+                <div class="line-Break"></div>
+    
+                <div class="captian-Container">
+                    <div class="captian-Img-Container">
+                        <img class="captian-Img" src="Media/OliverW.JPG">
+                    </div>
+                    <div class="captian-Text">
+                        <div class="captian-Name">Oliver Willer (#15)</div>
+                        <div class="captian-Title">HB (#15)</div>
+                    </div>
+                </div>
+    
+                <div class="line-Break"></div>
+    
+                <div class="captian-Container">
+                    <div class="captian-Img-Container">
+                        <img class="captian-Img" src="Media/KaiG.jpeg">
+                    </div>
+                    <div class="captian-Text">
+                        <div class="captian-Name">Kai Gagnon (#20)</div>
+                        <div class="captian-Title">LB (#20)</div>
+                    </div>
+                </div>
+    
+                <div class="line-Break"></div>
+    
+                <div class="captian-Container">
+                    <div class="captian-Img-Container">
+                        <img class="captian-Img" src="Media/PaulC.jpeg">
+                    </div>
+                    <div class="captian-Text">
+                        <div class="captian-Name">Paul Carter (#99)</div>
+                        <div class="captian-Title">DE (#99)</div>
+                    </div>
+                </div>
+    
+                <!-- <div class="coach-Container">
+                    <div class="coach-Img-Container">
+                        <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
+                    </div>
+                    <div class="coach-Text">
+                        <div class="coach-Name">Russell Hoff</div>
+                        <div class="coach-Title">Offensive Coach</div>
+                    </div>
+                </div> -->
             </div>
-            
-            <div class="line-Break"></div>
-
-            <div class="captian-Container">
-                <div class="captian-Img-Container">
-                    <img class="captian-Img" src="Media/OliverW.JPG">
-                </div>
-                <div class="captian-Text">
-                    <div class="captian-Name">Oliver Willer (#15)</div>
-                    <div class="captian-Title">HB (#15)</div>
-                </div>
-            </div>
-
-            <div class="line-Break"></div>
-
-            <div class="captian-Container">
-                <div class="captian-Img-Container">
-                    <img class="captian-Img" src="Media/KaiG.jpeg">
-                </div>
-                <div class="captian-Text">
-                    <div class="captian-Name">Kai Gagnon (#20)</div>
-                    <div class="captian-Title">LB (#20)</div>
-                </div>
-            </div>
-
-            <div class="line-Break"></div>
-
-            <div class="captian-Container">
-                <div class="captian-Img-Container">
-                    <img class="captian-Img" src="Media/PaulC.jpeg">
-                </div>
-                <div class="captian-Text">
-                    <div class="captian-Name">Paul Carter (#99)</div>
-                    <div class="captian-Title">DE (#99)</div>
-                </div>
-            </div>
-
-            <!-- <div class="coach-Container">
-                <div class="coach-Img-Container">
-                    <img class="coach-Img" src="Media/insta_Profile_Pictur.jpg">
-                </div>
-                <div class="coach-Text">
-                    <div class="coach-Name">Russell Hoff</div>
-                    <div class="coach-Title">Offensive Coach</div>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -1447,6 +3437,8 @@
     </div>
 
     <div id="fifth-Section">
+        <img id="blur-Img-3" class="blur-Image" src="Media/Blur(3).JPG">
+
         <div class="text-Container">        
             <div class="section-Title">Past Games</div>
             <div class="section-Description"></div>

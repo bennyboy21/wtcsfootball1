@@ -18,7 +18,7 @@ firebase.database().ref("info-Games/").once('value', function(snapshot) {
         console.log(child.val())
         var element = document.createElement("div")
         element.classList.add("past-Game-Post-Container")
-        element.innerHTML = '<div class="past-Game-Date">' + child.val().dateInfo + '</div><div class="past-Game-Our-Profile-Container"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="past-Game-Their-Profile-Container"><img class="past-Game-Img" src="Media/' + child.val().opponent + '.png"></div><div class="vs-Text">VS</div><div class="final-Text">-</div><div class="our-Final-Score">' + child.val().ourScore + '</div><div class="their-Final-Score">' + child.val().opponentScore + '</div>'
+        element.innerHTML = '<div class="past-Game-Date">' + child.val().dateInfo + '</div><div class="past-Game-Our-Profile-Container"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="past-Game-Their-Profile-Container"><img class="past-Game-Img" src="Media/' + child.val().opponent + '.png"></div><div class="vs-Text" style="transform:translate(-50%, -10px);">VS</div><div class="final-Text">-</div><div class="our-Final-Score">' + child.val().ourScore + '</div><div class="their-Final-Score">' + child.val().opponentScore + '</div>'
         document.getElementById("past-Games-Container").prepend(element)
         var element = document.createElement("div")
         element.innerHTML = '<div class="line-Game-Break"></div>'
@@ -35,8 +35,8 @@ firebase.database().ref("info-Games/").once('value', function(snapshot) {
 firebase.database().ref("live-Game").once("value", function(snapshot) {
     if(snapshot.val() != undefined) {
         var element = document.createElement("div")
-        element.classList.add("past-Game-Post-Container")
-        element.innerHTML = '<div class="red-Flash">Live</div><div class="past-Game-Post-Container" style="background:rgb(255, 255, 255, 0.02);backdrop-filter: blur(1rem);-webkit-backdrop-filter: blur(1rem); border-radius: 15px;position:relative;height:200px;margin-top: -25px;"><div id="quarter-Container"><div class="quarter-1">' + snapshot.val().quarter + '</div><div class="quarter-2">' + snapshot.val().quarter + '</div></div><div class="past-Game-Our-Profile-Container" style="top:75px;"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="past-Game-Their-Profile-Container" style="top:75px;"><img class="past-Game-Img" src="Media/' + snapshot.val().opponent + '.png"></div><div class="vs-Text" style="top:80px;">VS</div><div class="final-Text">-</div><div class="our-Final-Score-Container"><div class="our-Final-Score-1">' + snapshot.val().ourScore + '</div><div class="our-Final-Score-2">' + snapshot.val().ourScore + '</div></div><div class="their-Final-Score-Container"><div class="their-Final-Score-1">' + snapshot.val().theirScore + '</div><div class="their-Final-Score-2">' + snapshot.val().theirScore + '</div></div></div>'
+        element.classList.add("past-Live-Post-Container")
+        element.innerHTML = '<div class="red-Flash">Live</div><div id="quarter-Container"><div class="quarter-1">' + snapshot.val().quarter + '</div><div class="quarter-2">' + snapshot.val().quarter + '</div></div><div class="live-Game-Our-Profile-Container"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="live-Game-Their-Profile-Container"><img class="past-Game-Img" src="Media/' + snapshot.val().opponent + '.png"></div><div class="live-Vs-Text">VS</div><div class="final-Text">-</div><div class="our-Final-Score-Container"><div class="our-Final-Score-1">' + snapshot.val().ourScore + '</div><div class="our-Final-Score-2">' + snapshot.val().ourScore + '</div></div><div class="their-Final-Score-Container"><div class="their-Final-Score-1">' + snapshot.val().theirScore + '</div><div class="their-Final-Score-2">' + snapshot.val().theirScore + '</div></div>'
         document.getElementById("real-Live-Section").appendChild(element)
         liveGame = true
     } else {
@@ -125,8 +125,8 @@ firebase.database().ref("next-Game/").once("value", function(snapshot) {
         snapshot.forEach(function(child) {
             console.log(child.val())
             var element = document.createElement("div")
-            element.classList.add("past-Game-Post-Container")
-            element.innerHTML = '<div class="past-Game-Post-Container" style="background:rgb(255, 255, 255, 0.02);backdrop-filter: blur(1rem);-webkit-backdrop-filter: blur(1rem); border-radius: 15px;position:relative;height:200px;margin-top: -25px;"><div class="quarter">' + child.val().dateInfo + ' At ' + child.val().time + '</div><div class="past-Game-Our-Profile-Container" style="top:75px;"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="past-Game-Their-Profile-Container" style="top:75px;"><img class="past-Game-Img" src="Media/' + child.val().opponent + '.png"></div><div class="vs-Text" style="top:80px;">VS</div><div class="final-Text">-</div><div class="our-Final-Score">-</div><div class="their-Final-Score">-</div></div>'
+            element.classList.add("next-Live-Post-Container")
+            element.innerHTML = '<div class="next-Game-Date">' + child.val().dateInfo + ' At ' + child.val().time + '</div><div class="next-Game-Our-Profile-Container"><img class="past-Game-Img" src="Media/Logo.png"></div><div class="next-Game-Their-Profile-Container"><img class="past-Game-Img" src="Media/' + child.val().opponent + '.png"></div><div class="live-Vs-Text" style="transform:translate(-50%, -10px);">VS</div><div class="final-Text">-</div><div class="our-Final-Score">-</div><div class="their-Final-Score">-</div>'
             document.getElementById("live-Section").appendChild(element)
         })
     } else {
@@ -135,13 +135,30 @@ firebase.database().ref("next-Game/").once("value", function(snapshot) {
 })
 
 firebase.database().ref("notification").once("value", function(snapshot) {
-    if(snapshot.val() != undefined) {
+    if(snapshot.val() != undefined && !liveGame) {
         document.getElementById("notification-Header").innerText = snapshot.val().Header
         document.getElementById("view-More-Notification").innerText = snapshot.val().info
         document.getElementById("notification-Container").style.transition = ".5s"
         document.getElementById("notification-Container").style.top = "0px"
         document.getElementById("top-Bar").style.transition = ".5s"
         document.getElementById("top-Bar").style.top = "var(--height-Amount)"
+        setTimeout(function() {
+            document.getElementById("notification-Container").style.transition = "0s"
+            document.getElementById("top-Bar").style.transition = "0s"
+        }, 500)
+    }else if(snapshot.val() != undefined && liveGame) {
+        document.getElementById("notification-Header").innerText = snapshot.val().Header
+        document.getElementById("view-More-Notification").innerText = snapshot.val().info
+        document.getElementById("notification-Container").style.transition = ".5s"
+        document.getElementById("notification-Container").style.top = "0px"
+        document.getElementById("top-Bar").style.transition = ".5s"
+        document.getElementById("top-Bar").style.top = "var(--height-Amount)"
+        document.getElementById("logo-Img").classList.add("live-Game")
+        document.getElementById("real-Live-Section").classList.add("live-Game")
+        setTimeout(function() {
+            document.getElementById("notification-Container").style.transition = "0s"
+            document.getElementById("top-Bar").style.transition = "0s"
+        }, 500)
     } else {
         document.getElementById("notification-Container").style.top = "calc(var(--height-Amount) * -1)"
         document.getElementById("top-Bar").style.top = "0px"
@@ -240,4 +257,5 @@ function closeNotification() {
     document.getElementById("notification-Container").style.top = "calc(var(--height-Amount) * -1)"
     document.getElementById("top-Bar").style.transition = ".5s"
     document.getElementById("top-Bar").style.top = "0px"
+    document.getElementById("real-Live-Section").classList.remove("live-Game")
 }
